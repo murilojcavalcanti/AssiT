@@ -1,9 +1,9 @@
-﻿using Agenda.BackEnd.Application.Models;
-using Agenda.BackEnd.Core.Entities;
-using Agenda.BackEnd.Core.Interfaces.Repository;
+﻿using AssiT.Application.Models;
+using AssiT.Core.Entities;
+using AssiT.Core.Interfaces.Repository;
 using MediatR;
 
-namespace Agenda.BackEnd.Application.Services.Commands.UserCommands.UpdateUser
+namespace AssiT.BackEnd.Application.Services.Commands.UserCommands.UpdateUser
 {
     public class UpdateUserHandler : IRequestHandler<UpdateUserCommand, ResultViewModel>
     {

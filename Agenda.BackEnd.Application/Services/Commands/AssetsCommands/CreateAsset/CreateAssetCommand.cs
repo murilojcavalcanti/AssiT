@@ -3,7 +3,7 @@ using AssiT.Core.Entities;
 using MediatR;
 using System.ComponentModel.DataAnnotations;
 
-namespace Agenda.BackEnd.Application.Services.Commands.ContactCommands.CreateContact
+namespace AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateContact
 {
     public class CreateAssetCommand:IRequest<ResultViewModel<int>>
     {

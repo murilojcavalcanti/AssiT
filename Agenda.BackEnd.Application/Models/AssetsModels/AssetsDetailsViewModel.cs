@@ -1,11 +1,10 @@
 ﻿using AssiT.Core.Entities;
-using System.ComponentModel.DataAnnotations;
 
 namespace AssiT.Application.Models.AssetModels;
 
-public class AssetsViewModel
+public class AssetsDetailsViewModel
 {
-    public AssetsViewModel(int id, int categoryId, string number, string serialNumber, DateTime acquisitionDate, DateTime acquisitionValue)
+    public AssetsDetailsViewModel(int id, int categoryId, string number, string serialNumber, DateTime acquisitionDate, DateTime acquisitionValue)
     {
         Id = id;
         CategoryId = categoryId;

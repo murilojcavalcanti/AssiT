@@ -1,10 +1,10 @@
-﻿using Agenda.BackEnd.Application.Models;
-using Agenda.BackEnd.Application.Models.contactModels;
-using Agenda.BackEnd.Application.Models.userModels;
+﻿using AssiT.BackEnd.Application.Models;
+using AssiT.BackEnd.Application.Models.contactModels;
+using AssiT.BackEnd.Application.Models.userModels;
 using MediatR;
 using System.ComponentModel;
 
-namespace Agenda.BackEnd.Application.Services.Queries.UserQueries.GetAllUsers
+namespace AssiT.BackEnd.Application.Services.Queries.UserQueries.GetAllUsers
 {
     public class GetAllUsersQuery:IRequest<ResultViewModel<List<UserViewModel>>>
     {

@@ -1,7 +1,7 @@
-﻿using Agenda.BackEnd.Application.Services.Commands.ContactCommands.CreateContact;
+﻿using AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateContact;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Agenda.BackEnd.Application
+namespace AssiT.BackEnd.Application
 {
     public static class ApplicationModule
     {

@@ -4,7 +4,7 @@ using AssiT.Core.Interfaces;
 using AssiT.Core.Interfaces.Repository;
 using MediatR;
 
-namespace Agenda.BackEnd.Application.Services.Commands.UserCommands.CreateUser
+namespace AssiT.BackEnd.Application.Services.Commands.UserCommands.CreateUser
 {
     public class CreateUserHandler : IRequestHandler<CreateUserCommand, ResultViewModel<int>>
     {

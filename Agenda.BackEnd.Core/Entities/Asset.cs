@@ -27,7 +27,7 @@ namespace AssiT.Core.Entities
         [Required]
         public DateTime AcquisitionDate { get; set; }
         [Required]
-        public DateTime AcquisitionValue { get; set; }
+        public decimal AcquisitionValue { get; set; }
 
         public void Update(Asset assetUpdated)
         {

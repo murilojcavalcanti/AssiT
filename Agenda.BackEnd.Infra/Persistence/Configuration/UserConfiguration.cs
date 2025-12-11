@@ -1,4 +1,4 @@
-﻿using Agenda.BackEnd.Core.Entities;
+﻿using AssiT.BackEnd.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Agenda.BackEnd.Infra.Persistence.Configuration
+namespace AssiT.BackEnd.Infra.Persistence.Configuration
 {
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {

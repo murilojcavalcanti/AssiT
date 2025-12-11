@@ -1,4 +1,4 @@
-using Agenda.BackEnd.Application;
+using AssiT.BackEnd.Application;
 using AssiT.Infra;
 
 var builder = WebApplication.CreateBuilder(args);

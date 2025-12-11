@@ -1,10 +1,10 @@
-﻿using Agenda.BackEnd.Application.Services.Commands.ContactCommands.CreateContact;
-using Agenda.BackEnd.Application.Services.Queries.ContactQueries.GetContact;
+﻿using AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateContact;
+using AssiT.BackEnd.Application.Services.Queries.ContactQueries.GetContact;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Agenda.BackEnd.API.Controllers
+namespace AssiT.BackEnd.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -36,7 +36,7 @@ namespace Agenda.BackEnd.API.Controllers
         }
 
         [HttpGet("GetContactById")]
-        public async Task<IActionResult> GetByIdAsync([FromQuery] GetAllContactQuery query)
+        public async Task<IActionResult> GetByIdAsync([FromQuery] GetAllAssetQuery query)
         {
             try
             {
@@ -55,7 +55,7 @@ namespace Agenda.BackEnd.API.Controllers
         }
 
         [HttpGet("GetAllContacts")]
-        public async Task<IActionResult> GetAllAsync([FromQuery]GetAllContactQuery query)
+        public async Task<IActionResult> GetAllAsync([FromQuery]GetAllAssetQuery query)
         {
             try
             {

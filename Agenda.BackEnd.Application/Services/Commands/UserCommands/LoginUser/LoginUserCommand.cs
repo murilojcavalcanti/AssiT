@@ -1,9 +1,8 @@
-﻿using Agenda.BackEnd.Application.Models;
-using Agenda.BackEnd.Core.Entities;
+﻿using AssiT.Application.Models;
 using MediatR;
 using System.ComponentModel.DataAnnotations;
 
-namespace Agenda.BackEnd.Application.Services.Commands.UserCommands.LoginUser
+namespace AssiT.BackEnd.Application.Services.Commands.UserCommands.LoginUser
 {
     public class LoginUserCommand : IRequest<ResultViewModel<string>>
     {

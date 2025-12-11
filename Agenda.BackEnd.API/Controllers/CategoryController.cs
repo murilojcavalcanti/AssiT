@@ -1,22 +1,24 @@
-﻿using AssiT.Application.Models;
+﻿using AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateContact;
+using AssiT.BackEnd.Application.Services.Queries.ContactQueries.GetContact;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AssiT.BackEnd.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class CategoryController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public UserController(IMediator mediator)
+        public CategoryController(IMediator mediator)
         {
             _mediator = mediator;
         }
-
-        [HttpPost("CreateUser")]
-        public IActionResult Create([FromBody] CreateUserCommand request)
+        /*
+        [HttpPost("CreateContact")]
+        public IActionResult Create(CreateContactCommand request)
         {
             try
             {
@@ -32,30 +34,13 @@ namespace AssiT.BackEnd.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
-        [HttpPost("Login")]
-        public async Task<IActionResult> Login([FromBody] LoginUserCommand request)
-        {
-            try
-            {
-                ResultViewModel result = await _mediator.Send(request);
-                if (!result.IsSuccess)
-                {
-                    return BadRequest(result);
-                }
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
-            }
-        }
 
-        [HttpGet("GetUserById")]
-        public async Task<IActionResult> GetByIdAsync([FromQuery] GetUserByIdQuery query)
+        [HttpGet("GetContactById")]
+        public async Task<IActionResult> GetByIdAsync([FromQuery] GetAllContactQuery query)
         {
             try
             {
-                ResultViewModel result = await _mediator.Send(query);
+                var result = await _mediator.Send(query);
                 if (!result.IsSuccess)
                 {
                     return BadRequest(result);
@@ -66,10 +51,11 @@ namespace AssiT.BackEnd.API.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
+
         }
 
-        [HttpGet("GetAllUsers")]
-        public async Task<IActionResult> GetAllAsync([FromQuery] GetAllUsersQuery query)
+        [HttpGet("GetAllContacts")]
+        public async Task<IActionResult> GetAllAsync([FromQuery]GetAllContactQuery query)
         {
             try
             {
@@ -85,12 +71,13 @@ namespace AssiT.BackEnd.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
-        [HttpPut("UpdateUser")]
-        public async Task<IActionResult> UpdateAsync([FromBody] UpdateUserCommand command)
+
+        [HttpPut("UpdateContact")]
+        public IActionResult Update(UpdateContactCommand request)
         {
             try
             {
-                var result = await _mediator.Send(command);
+                var result = _mediator.Send(request).Result;
                 if (!result.IsSuccess)
                 {
                     return BadRequest(result);
@@ -103,12 +90,12 @@ namespace AssiT.BackEnd.API.Controllers
             }
         }
 
-        [HttpDelete("DeleteUser")]
-        public async Task<IActionResult> DeleteAsync([FromBody] DeleteUserCommand command)
+        [HttpDelete("DeleteContact")]
+        public IActionResult Delete(CreateContactCommand request)
         {
             try
             {
-                var result = await _mediator.Send(command);
+                var result = _mediator.Send(request).Result;
                 if (!result.IsSuccess)
                 {
                     return BadRequest(result);
@@ -120,5 +107,6 @@ namespace AssiT.BackEnd.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
+        */
     }
 }

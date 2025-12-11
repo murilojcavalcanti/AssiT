@@ -3,7 +3,7 @@ using AssiT.Core.Entities;
 using AssiT.Core.Interfaces.Repository;
 using MediatR;
 
-namespace Agenda.BackEnd.Application.Services.Commands.ContactCommands.CreateContact
+namespace AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateContact
 {
     public class DeleteAssetHandler : IRequestHandler<DeleteAssetCommand, ResultViewModel>
     {

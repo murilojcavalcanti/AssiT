@@ -1,9 +1,9 @@
-﻿using Agenda.BackEnd.Application.Models;
+﻿using AssiT.Application.Models;
 using MediatR;
 
-namespace Agenda.BackEnd.Application.Services.Commands.UserCommands.DeleteUser
+namespace AssiT.BackEnd.Application.Services.Commands.UserCommands.DeleteUser
 {
-    public class DeleteUserCommand:IRequest<ResultViewModel>
+    public class DeleteUserCommand : IRequest<ResultViewModel>
     {
         public int Id { get; set; }
 

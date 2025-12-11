@@ -3,7 +3,7 @@ using AssiT.Core.Entities;
 using MediatR;
 using System.ComponentModel.DataAnnotations;
 
-namespace Agenda.BackEnd.Application.Services.Commands.UserCommands.CreateUser
+namespace AssiT.BackEnd.Application.Services.Commands.UserCommands.CreateUser
 {
     public class CreateUserCommand:IRequest<ResultViewModel<int>>
     {

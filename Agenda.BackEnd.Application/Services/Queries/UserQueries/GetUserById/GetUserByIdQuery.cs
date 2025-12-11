@@ -1,8 +1,8 @@
-﻿using Agenda.BackEnd.Application.Models;
-using Agenda.BackEnd.Application.Models.userModels;
+﻿using AssiT.BackEnd.Application.Models;
+using AssiT.BackEnd.Application.Models.userModels;
 using MediatR;
 
-namespace Agenda.BackEnd.Application.Services.Queries.UserQueries.GetUserById
+namespace AssiT.BackEnd.Application.Services.Queries.UserQueries.GetUserById
 {
     public class GetUserByIdQuery:IRequest<ResultViewModel<UserViewModel>>
     {
