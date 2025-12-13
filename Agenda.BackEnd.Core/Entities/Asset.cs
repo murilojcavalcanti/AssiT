@@ -4,11 +4,11 @@ namespace AssiT.Core.Entities
 {
     public class Asset: BaseEntity
     {
-        public Asset(int categoriaId, string number, string serialNumber, 
+        public Asset(int categoriaId, string name, string serialNumber, 
             DateTime acquisitionDate, decimal acquisitionValue):base(DateTime.Now)
         {
             CategoryId = categoriaId;
-            Number = number;
+            Name = name;
             SerialNumber = serialNumber;
             AcquisitionDate = acquisitionDate;
             AcquisitionValue = acquisitionValue;
@@ -17,8 +17,8 @@ namespace AssiT.Core.Entities
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
 
-        [MaxLength(15)]
-        public string Number { get; set; }
+        [StringLength(maximumLength:100,MinimumLength =3, ErrorMessage = "O nome do ativo deve ter entre 3 e 100 caracteres")]
+        public string Name { get; set; }
         
         [StringLength(15, ErrorMessage = "O numero de serie deve ter no máximo 15 caracteres")]
         [MinLength(10,ErrorMessage ="O numero de serie deve ter no minimo 10 caracteres")]
@@ -37,7 +37,7 @@ namespace AssiT.Core.Entities
             }
 
             CategoryId = assetUpdated.CategoryId;
-            Number = string.IsNullOrWhiteSpace(assetUpdated.Number) ? Number : assetUpdated.Number;
+            Name = string.IsNullOrWhiteSpace(assetUpdated.Name) ? Name : assetUpdated.Name;
             SerialNumber = string.IsNullOrWhiteSpace(assetUpdated.SerialNumber) ? SerialNumber : assetUpdated.SerialNumber;
             AcquisitionDate = assetUpdated.AcquisitionDate;
             AcquisitionValue = assetUpdated.AcquisitionValue;

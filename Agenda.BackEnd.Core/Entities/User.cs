@@ -18,8 +18,9 @@ namespace AssiT.Core.Entities
         }
 
         [EmailAddress]
+        [StringLength(100,MinimumLength =3,ErrorMessage = "O nome deve ter no maximo 100 caracteres e no minimo 3 caracteres")]
         public string Email { get; set; }
-        [MinLength(3)]
+        [StringLength(100,MinimumLength =3,ErrorMessage = "O nome deve ter no maximo 100 caracteres e no minimo 3 caracteres")]
         public string Name { get; set; }
         [Length(8,16)]
         public string Password { get; set; }

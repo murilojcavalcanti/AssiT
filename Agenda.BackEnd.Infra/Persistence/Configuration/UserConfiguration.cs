@@ -10,9 +10,17 @@ namespace AssiT.BackEnd.Infra.Persistence.Configuration
         {
             builder.HasKey(u => u.Id);
             
-            builder.Property(u => u.Email)
+            builder.Property(u => u.Name)
+                .HasMaxLength(100)
                    .IsRequired();
-            
+
+            builder.Property(u => u.Email)
+                .HasMaxLength(100)
+                   .IsRequired();
+
+            builder.HasIndex(u => u.Email)
+                .IsUnique();
+
             builder.Property(u => u.Name)
                    .IsRequired()
                    .HasMaxLength(100);

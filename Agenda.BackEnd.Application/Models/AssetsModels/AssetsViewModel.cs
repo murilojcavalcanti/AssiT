@@ -5,11 +5,11 @@ namespace AssiT.Application.Models.AssetModels;
 
 public class AssetsViewModel
 {
-    public AssetsViewModel(int id, int categoryId, string number, string serialNumber, DateTime acquisitionDate, decimal acquisitionValue)
+    public AssetsViewModel(int id, int categoryId, string name, string serialNumber, DateTime acquisitionDate, decimal acquisitionValue)
     {
         Id = id;
         CategoryId = categoryId;
-        Number = number;
+        Name = name;
         SerialNumber = serialNumber;
         AcquisitionDate = acquisitionDate;
         AcquisitionValue = acquisitionValue;
@@ -17,7 +17,7 @@ public class AssetsViewModel
 
     public int Id { get; set; }
     public int CategoryId { get; set; }
-    public string Number { get; set; }
+    public string Name { get; set; }
     public string SerialNumber { get; set; }
     public DateTime AcquisitionDate { get; set; }
     public decimal AcquisitionValue { get; set; }
@@ -25,7 +25,7 @@ public class AssetsViewModel
         new AssetsViewModel(
             id: Asset.Id,
             categoryId:Asset.CategoryId,
-            number: Asset.Number,
+            name: Asset.Name,
             serialNumber: Asset.SerialNumber,
             acquisitionDate: Asset.AcquisitionDate,
             acquisitionValue: Asset.AcquisitionValue

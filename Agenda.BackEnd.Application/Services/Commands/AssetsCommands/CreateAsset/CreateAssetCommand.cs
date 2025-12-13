@@ -7,10 +7,10 @@ namespace AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateCont
 {
     public class CreateAssetCommand:IRequest<ResultViewModel<int>>
     {
-        public CreateAssetCommand(int categoryId, string number, string serialNumber, DateTime acquisitionDate, decimal acquisitionValue)
+        public CreateAssetCommand(int categoryId, string name, string serialNumber, DateTime acquisitionDate, decimal acquisitionValue)
         {
             CategoryId = categoryId;
-            Number = number;
+            Name = name;
             SerialNumber = serialNumber;
             AcquisitionDate = acquisitionDate;
             AcquisitionValue = acquisitionValue;
@@ -18,8 +18,8 @@ namespace AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateCont
 
         public int CategoryId { get; set; }
 
-        [MaxLength(15)]
-        public string Number { get; set; }
+        [StringLength(maximumLength: 100, MinimumLength = 3, ErrorMessage = "O nome do ativo deve ter entre 3 e 100 caracteres")]
+        public string Name { get; set; }
 
         [StringLength(15, ErrorMessage = "O numero de serie deve ter no máximo 15 caracteres")]
         [MinLength(10, ErrorMessage = "O numero de serie deve ter no minimo 10 caracteres")]
@@ -28,11 +28,12 @@ namespace AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateCont
         [Required]
         public DateTime AcquisitionDate { get; set; }
         [Required]
+        [Range(0.01, double.MaxValue, ErrorMessage = "O valor de aquisição deve ser maior que zero")]
         public decimal AcquisitionValue { get; set; }
 
         public Asset ToEntity()
         {
-            return new Asset(CategoryId,Number,SerialNumber,AcquisitionDate,AcquisitionValue);
+            return new Asset(CategoryId,Name,SerialNumber,AcquisitionDate,AcquisitionValue);
         }
     }
 }

@@ -8,18 +8,18 @@ namespace AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateCont
     public class CreateAssetHandler : IRequestHandler<CreateAssetCommand, ResultViewModel<int>>
     {
         private readonly IAssetRepository _assetRepository;
-        private readonly IUserRepository _userRepository;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public CreateAssetHandler(IAssetRepository assetRepository, IUserRepository userRepository)
+        public CreateAssetHandler(IAssetRepository assetRepository, ICategoryRepository categoryRepository)
         {
             _assetRepository = assetRepository;
-            _userRepository = userRepository;
+            _categoryRepository = categoryRepository;
         }
 
         public async Task<ResultViewModel<int>> Handle(CreateAssetCommand request, CancellationToken cancellationToken)
         {
             Asset asset = request.ToEntity();
-            var existingCategory = await _userRepository.Get(u => u.Id == request.CategoryId);
+            var existingCategory = await _categoryRepository.Get(u => u.Id == request.CategoryId);
             if (existingCategory == null)
             {
                 return ResultViewModel<int>.Error("Não existe esta categoria cadastrada.");

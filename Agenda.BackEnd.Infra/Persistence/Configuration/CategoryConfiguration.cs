@@ -4,22 +4,20 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AssiT.BackEnd.Infra.Persistence.Configuration
 {
-    public class UserConfiguration : IEntityTypeConfiguration<User>
+    public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.HasKey(u => u.Id);
+            builder.HasKey(c => c.Id);
             
-            builder.Property(u => u.Email)
-                   .IsRequired();
-            
-            builder.Property(u => u.Name)
+            builder.Property(C => C.Name)
                    .IsRequired()
                    .HasMaxLength(100);
 
-            builder.Property(u => u.Password)
-                   .IsRequired()
-                   .HasMaxLength(16);
+            builder.HasMany(c => c.Assets)
+                .WithOne(a=>a.Category)
+                .HasForeignKey(a=>a.CategoryId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

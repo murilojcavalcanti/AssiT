@@ -8,23 +8,25 @@ namespace AssiT.BackEnd.Infra.Persistence.Configuration
     {
         public void Configure(EntityTypeBuilder<Asset> builder)
         {
-            builder.HasKey(c => c.Id);
+            builder.HasKey(a => a.Id);
 
-/*            builder.Property(c => c.Alias)
+            builder.Property(a => a.Name)
                    .IsRequired()
-                   .HasMaxLength(15);
-            
-            builder.Property(c => c.PhoneNumber)
-                    .HasMaxLength(16)
+                   .HasMaxLength(100);
+
+            builder.Property(a => a.AcquisitionValue)
                    .IsRequired();
             
-            builder.Property(c => c.EmailAdress)
+            builder.Property(a => a.SerialNumber)
+                    .HasMaxLength(15)
                    .IsRequired();
+            builder.HasIndex(a => a.SerialNumber)
+                .IsUnique();
             
-            builder.HasOne(c => c.User)
-                   .WithMany(u => u.Contacts)
-                   .HasForeignKey(c => c.UserId)
+            builder.HasOne(A => A.Category)
+                   .WithMany(C => C.Assets)
+                   .HasForeignKey(A => A.CategoryId)
                    .OnDelete(DeleteBehavior.Cascade);
-  */      }
+        }
     }
 }
