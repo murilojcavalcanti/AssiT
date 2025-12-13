@@ -1,7 +1,7 @@
-﻿using AssiT.BackEnd.Application.Models;
-using AssiT.BackEnd.Application.Models.userModels;
-using AssiT.BackEnd.Core.Entities;
-using AssiT.BackEnd.Core.Interfaces.Repository;
+﻿using AssiT.Application.Models;
+using AssiT.Application.Models.userModels;
+using AssiT.Core.Entities;
+using AssiT.Core.Interfaces.Repository;
 using MediatR;
 
 namespace AssiT.BackEnd.Application.Services.Queries.UserQueries.GetUserById

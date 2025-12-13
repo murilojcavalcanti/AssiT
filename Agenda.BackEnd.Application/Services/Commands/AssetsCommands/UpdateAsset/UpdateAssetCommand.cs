@@ -11,7 +11,7 @@ namespace AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateCont
         {
             
         }
-        public UpdateAssetCommand(int categoryId, string number, string serialNumber, DateTime acquisitionDate, DateTime acquisitionValue, int id)
+        public UpdateAssetCommand(int categoryId, string number, string serialNumber, DateTime acquisitionDate, decimal acquisitionValue, int id)
         {
             CategoryId = categoryId;
             Number = number;
@@ -33,7 +33,7 @@ namespace AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateCont
         [Required]
         public DateTime AcquisitionDate { get; set; }
         [Required]
-        public DateTime AcquisitionValue { get; set; }
+        public decimal AcquisitionValue { get; set; }
 
         public Asset ToEntity()
         {

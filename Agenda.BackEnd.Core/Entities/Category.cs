@@ -4,17 +4,17 @@ namespace AssiT.Core.Entities
 {
     public class Category: BaseEntity
     {
-        public Category(string alias):base(DateTime.Now)
+        public Category(string name):base(DateTime.Now)
         {
-            Alias = alias;
+            name = name;
         }
 
         [MaxLength(15)]
-        public string Alias { get; set; }
+        public string Name { get; set; }
         public ICollection<Asset> Assets { get; set; }
         public void Update(Category  categoryUpdated)
         {
-            Alias = string.IsNullOrEmpty(categoryUpdated.Alias) ? Alias : categoryUpdated.Alias;
+            Name = string.IsNullOrEmpty(categoryUpdated.Name) ? Name : categoryUpdated.Name;
         }
     }
 }

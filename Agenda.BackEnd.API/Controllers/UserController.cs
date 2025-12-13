@@ -1,4 +1,10 @@
 ﻿using AssiT.Application.Models;
+using AssiT.BackEnd.Application.Services.Commands.UserCommands.CreateUser;
+using AssiT.BackEnd.Application.Services.Commands.UserCommands.DeleteUser;
+using AssiT.BackEnd.Application.Services.Commands.UserCommands.LoginUser;
+using AssiT.BackEnd.Application.Services.Commands.UserCommands.UpdateUser;
+using AssiT.BackEnd.Application.Services.Queries.UserQueries.GetAllUsers;
+using AssiT.BackEnd.Application.Services.Queries.UserQueries.GetUserById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

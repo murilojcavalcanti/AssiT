@@ -1,7 +1,6 @@
 ﻿using AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateContact;
 using AssiT.BackEnd.Application.Services.Queries.ContactQueries.GetContact;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AssiT.BackEnd.API.Controllers
@@ -17,8 +16,8 @@ namespace AssiT.BackEnd.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost("CreateContact")]
-        public IActionResult Create(CreateContactCommand request)
+        [HttpPost("CreateAsset")]
+        public IActionResult Create(CreateAssetCommand request)
         {
             try
             {
@@ -35,7 +34,7 @@ namespace AssiT.BackEnd.API.Controllers
             }
         }
 
-        [HttpGet("GetContactById")]
+        [HttpGet("GetAssetById")]
         public async Task<IActionResult> GetByIdAsync([FromQuery] GetAllAssetQuery query)
         {
             try
@@ -72,8 +71,8 @@ namespace AssiT.BackEnd.API.Controllers
             }
         }
 
-        [HttpPut("UpdateContact")]
-        public IActionResult Update(UpdateContactCommand request)
+        [HttpPut("UpdateAsset")]
+        public IActionResult Update(UpdateAssetCommand request)
         {
             try
             {
@@ -90,8 +89,8 @@ namespace AssiT.BackEnd.API.Controllers
             }
         }
 
-        [HttpDelete("DeleteContact")]
-        public IActionResult Delete(CreateContactCommand request)
+        [HttpDelete("DeleteAsset")]
+        public IActionResult Delete(DeleteAssetCommand request)
         {
             try
             {

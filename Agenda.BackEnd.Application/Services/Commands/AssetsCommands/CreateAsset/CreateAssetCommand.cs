@@ -7,7 +7,7 @@ namespace AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateCont
 {
     public class CreateAssetCommand:IRequest<ResultViewModel<int>>
     {
-        public CreateAssetCommand(int categoryId, string number, string serialNumber, DateTime acquisitionDate, DateTime acquisitionValue)
+        public CreateAssetCommand(int categoryId, string number, string serialNumber, DateTime acquisitionDate, decimal acquisitionValue)
         {
             CategoryId = categoryId;
             Number = number;
@@ -28,7 +28,7 @@ namespace AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateCont
         [Required]
         public DateTime AcquisitionDate { get; set; }
         [Required]
-        public DateTime AcquisitionValue { get; set; }
+        public decimal AcquisitionValue { get; set; }
 
         public Asset ToEntity()
         {

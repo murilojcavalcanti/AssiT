@@ -5,7 +5,7 @@ namespace AssiT.Core.Interfaces.Repository
 {
     public interface IRepository<T> where T : BaseEntity
     {
-        Task<ICollection<(ICollection<T>, int)>> GetAll(Expression<Func<T, bool>> predicate, int Page);
+        Task<(ICollection<T>, int)> GetAll(Expression<Func<T, bool>> predicate, int Page);
         Task<T> Get(Expression<Func<T, bool>> predicate);
         Task<T> Insert(T Entity);
         Task Update(T Entity);

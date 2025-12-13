@@ -5,7 +5,7 @@ namespace AssiT.Core.Entities
     public class Asset: BaseEntity
     {
         public Asset(int categoriaId, string number, string serialNumber, 
-            DateTime acquisitionDate, DateTime acquisitionValue):base(DateTime.Now)
+            DateTime acquisitionDate, decimal acquisitionValue):base(DateTime.Now)
         {
             CategoryId = categoriaId;
             Number = number;

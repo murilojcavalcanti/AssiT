@@ -27,15 +27,15 @@ namespace AssiT.Infra.Persistence.Repositories
             return await _context.Set<T>().Where(e => e.IsDeleted == false).FirstOrDefaultAsync(predicate);
         }
 
-        public async Task<(ICollection<T>,int)> GetAll(Expression<Func<T, bool>> predicate, int page=1)
+        public async Task<(ICollection<T>, int)> GetAll(Expression<Func<T, bool>> predicate, int page=1)
         {
-            var query = _context.Set<T>().Where(e => e.IsDeleted == false);
-            var total = await query.CountAsync();
+            IQueryable<T> query = _context.Set<T>().Where(e => !e.IsDeleted);
 
             if (predicate != null)
-            {
                 query = query.Where(predicate);
-            }
+
+            int total = await query.CountAsync();
+
             if (page == 0 )
             {
                 return (

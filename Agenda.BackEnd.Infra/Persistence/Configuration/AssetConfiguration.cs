@@ -1,16 +1,16 @@
-﻿using AssiT.BackEnd.Core.Entities;
+﻿using AssiT.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AssiT.BackEnd.Infra.Persistence.Configuration
 {
-    public class ContactConfiguration : IEntityTypeConfiguration<Contact>
+    public class AssetConfiguration : IEntityTypeConfiguration<Asset>
     {
-        public void Configure(EntityTypeBuilder<Contact> builder)
+        public void Configure(EntityTypeBuilder<Asset> builder)
         {
             builder.HasKey(c => c.Id);
 
-            builder.Property(c => c.Alias)
+/*            builder.Property(c => c.Alias)
                    .IsRequired()
                    .HasMaxLength(15);
             
@@ -25,6 +25,6 @@ namespace AssiT.BackEnd.Infra.Persistence.Configuration
                    .WithMany(u => u.Contacts)
                    .HasForeignKey(c => c.UserId)
                    .OnDelete(DeleteBehavior.Cascade);
-        }
+  */      }
     }
 }

@@ -23,7 +23,6 @@ namespace AssiT.Core.Entities
         public string Name { get; set; }
         [Length(8,16)]
         public string Password { get; set; }
-        public ICollection<Asset>? Contacts { get; set; }
 
         public void Update(User userUpdated)
         {

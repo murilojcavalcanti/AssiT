@@ -1,14 +1,13 @@
-﻿using AssiT.BackEnd.Application.Models;
-using AssiT.BackEnd.Application.Models.contactModels;
-using AssiT.BackEnd.Application.Models.userModels;
-using AssiT.BackEnd.Core.Entities;
-using AssiT.BackEnd.Core.Interfaces.Repository;
+﻿using AssiT.Application.Models;
+using AssiT.Application.Models.userModels;
+using AssiT.Core.Entities;
+using AssiT.Core.Interfaces.Repository;
 using MediatR;
 using System.Linq.Expressions;
 
 namespace AssiT.BackEnd.Application.Services.Queries.UserQueries.GetAllUsers
 {
-    public class GetAllUsersHandler : IRequestHandler<GetAllUsersQuery, ResultViewModel<List<UserViewModel>>>
+    public class GetAllUsersHandler : IRequestHandler<GetAllUsersQuery, ResultViewModel<(List<UserViewModel>, int)>>
     {
         private readonly IUserRepository _userRepository;
 
@@ -17,15 +16,15 @@ namespace AssiT.BackEnd.Application.Services.Queries.UserQueries.GetAllUsers
             _userRepository = userRepository;
         }
 
-        public async Task<ResultViewModel<List<UserViewModel>>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
+        public async Task<ResultViewModel<(List<UserViewModel>,int)>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
-            
             Expression<Func<User, bool>> predicate = null;
 
-            var users = await _userRepository.GetAll(predicate, request.Page);
+            (ICollection<User>users,int total) = await _userRepository.GetAll(predicate, request.Page);
 
             var usersViewModels = users.Select(c => UserViewModel.FromEntity(c)).ToList();
-            return ResultViewModel<List<UserViewModel>>.Success(usersViewModels);
+
+            return ResultViewModel<(List<UserViewModel>,int)>.Success((usersViewModels,total));
         }
     }
 }

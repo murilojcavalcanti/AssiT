@@ -1,4 +1,5 @@
 ﻿using AssiT.Application.Models;
+using AssiT.Core.Entities;
 using MediatR;
 using System.ComponentModel.DataAnnotations;
 
