@@ -25,7 +25,7 @@ namespace AssiT.BackEnd.Application.Services.Queries.ContactQueries.GetContact
                 (!request.AcquisitionValueMax.HasValue || c.AcquisitionValue <= request.AcquisitionValueMax.Value) &&
                 (!request.AcquisitionValueMin.HasValue || c.AcquisitionValue >= request.AcquisitionValueMin.Value);
 
-            (ICollection<Asset> assets, int total) = await _assetRepository.GetAll(predicate, request.Page);
+            (ICollection<Asset> assets, int total) = await _assetRepository.GetAll(null, request.Page);
 
             var assetViewModels = assets
                 .Select(AssetsViewModel.FromEntity)

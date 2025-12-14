@@ -1,5 +1,6 @@
 ﻿using AssiT.Application.Models;
 using AssiT.Core.Entities;
+using AssiT.Core.Enums;
 using MediatR;
 using System.ComponentModel.DataAnnotations;
 
@@ -11,7 +12,7 @@ namespace AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateCont
         {
             
         }
-        public UpdateAssetCommand(int categoryId, string name, string serialNumber, DateTime acquisitionDate, decimal acquisitionValue, int id)
+        public UpdateAssetCommand(int categoryId, string name, string serialNumber, DateTime acquisitionDate, decimal acquisitionValue, int id, AssetStatus assetStatus)
         {
             CategoryId = categoryId;
             Name = name;
@@ -19,6 +20,7 @@ namespace AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateCont
             AcquisitionDate = acquisitionDate;
             AcquisitionValue = acquisitionValue;
             Id = id;
+            AssetStatus = assetStatus;
         }
         public int Id { get; set; }
         public int CategoryId { get; set; }
@@ -30,16 +32,15 @@ namespace AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateCont
         [MinLength(10, ErrorMessage = "O numero de serie deve ter no minimo 10 caracteres")]
         public string SerialNumber { get; set; }
 
-        [Required]
         public DateTime AcquisitionDate { get; set; }
 
-        [Required]
         [Range(0.01, double.MaxValue, ErrorMessage = "O valor de aquisição deve ser maior que zero")]
         public decimal AcquisitionValue { get; set; }
+        public AssetStatus AssetStatus { get; set; }
 
         public Asset ToEntity()
         {
-            return new Asset(CategoryId,Name,SerialNumber,AcquisitionDate,AcquisitionValue);
+            return new Asset(CategoryId,Name,SerialNumber,AcquisitionDate,AcquisitionValue,AssetStatus);
         }
     }
 }

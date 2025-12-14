@@ -53,7 +53,7 @@ namespace AssiT.BackEnd.API.Controllers
 
         }
 
-        [HttpGet("GetAllContacts")]
+        [HttpGet("GetAllAssets")]
         public async Task<IActionResult> GetAllAsync([FromQuery]GetAllAssetQuery query)
         {
             try

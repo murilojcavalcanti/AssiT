@@ -11,5 +11,11 @@ namespace AssiT.Infra.Persistence.Context
         public DbSet<User> Users { get; set; }
         public DbSet<Asset> Assets { get; set; }
         public DbSet<Category> Categories { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AssiTAppContext).Assembly);
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

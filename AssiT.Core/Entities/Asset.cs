@@ -1,33 +1,31 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using AssiT.Core.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace AssiT.Core.Entities
 {
     public class Asset: BaseEntity
     {
-        public Asset(int categoriaId, string name, string serialNumber, 
-            DateTime acquisitionDate, decimal acquisitionValue):base(DateTime.Now)
+        public Asset(int? categoryId, string name, string serialNumber,
+            DateTime? acquisitionDate, decimal? acquisitionValue, AssetStatus? assetStatus) : base(DateTime.Now)
         {
-            CategoryId = categoriaId;
+            CategoryId = categoryId;
             Name = name;
             SerialNumber = serialNumber;
             AcquisitionDate = acquisitionDate;
             AcquisitionValue = acquisitionValue;
+            AssetStatus = assetStatus;
         }
 
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
         public Category? Category { get; set; }
 
-        [StringLength(maximumLength:100,MinimumLength =3, ErrorMessage = "O nome do ativo deve ter entre 3 e 100 caracteres")]
         public string Name { get; set; }
         
-        [StringLength(15, ErrorMessage = "O numero de serie deve ter no máximo 15 caracteres")]
-        [MinLength(10,ErrorMessage ="O numero de serie deve ter no minimo 10 caracteres")]
         public string SerialNumber { get; set; }
         
-        [Required]
-        public DateTime AcquisitionDate { get; set; }
-        [Required]
-        public decimal AcquisitionValue { get; set; }
+        public DateTime? AcquisitionDate { get; set; }
+        public decimal? AcquisitionValue { get; set; }
+        public AssetStatus? AssetStatus { get; set; }
 
         public void Update(Asset assetUpdated)
         {
@@ -39,8 +37,10 @@ namespace AssiT.Core.Entities
             CategoryId = assetUpdated.CategoryId;
             Name = string.IsNullOrWhiteSpace(assetUpdated.Name) ? Name : assetUpdated.Name;
             SerialNumber = string.IsNullOrWhiteSpace(assetUpdated.SerialNumber) ? SerialNumber : assetUpdated.SerialNumber;
+            AssetStatus = assetUpdated.AssetStatus == null|| (int)assetUpdated.AssetStatus == 0 ? AssetStatus : assetUpdated.AssetStatus;
             AcquisitionDate = assetUpdated.AcquisitionDate;
             AcquisitionValue = assetUpdated.AcquisitionValue;
+            AssetStatus = assetUpdated.AssetStatus==null || (int)assetUpdated.AssetStatus==0?AssetStatus:assetUpdated.AssetStatus;
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using AssiT.Application.Models;
 using AssiT.Core.Entities;
+using AssiT.Core.Enums;
 using MediatR;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,13 +8,14 @@ namespace AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateCont
 {
     public class CreateAssetCommand:IRequest<ResultViewModel<int>>
     {
-        public CreateAssetCommand(int categoryId, string name, string serialNumber, DateTime acquisitionDate, decimal acquisitionValue)
+        public CreateAssetCommand(int categoryId, string name, string serialNumber, DateTime acquisitionDate, decimal acquisitionValue, AssetStatus assetStatus)
         {
             CategoryId = categoryId;
             Name = name;
             SerialNumber = serialNumber;
             AcquisitionDate = acquisitionDate;
             AcquisitionValue = acquisitionValue;
+            AssetStatus = assetStatus;
         }
 
         public int CategoryId { get; set; }
@@ -30,10 +32,12 @@ namespace AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateCont
         [Required]
         [Range(0.01, double.MaxValue, ErrorMessage = "O valor de aquisição deve ser maior que zero")]
         public decimal AcquisitionValue { get; set; }
+        [Required]
+        public AssetStatus AssetStatus { get; set; }
 
         public Asset ToEntity()
         {
-            return new Asset(CategoryId,Name,SerialNumber,AcquisitionDate,AcquisitionValue);
+            return new Asset(CategoryId,Name,SerialNumber,AcquisitionDate,AcquisitionValue,AssetStatus);
         }
     }
 }

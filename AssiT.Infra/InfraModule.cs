@@ -18,7 +18,7 @@ namespace AssiT.Infra
         }
         public static IServiceCollection AddData(this IServiceCollection services, IConfiguration configuration)
         {
-            string conString = configuration.GetConnectionString("AssetApp");
+            string conString = configuration.GetConnectionString("AssitApp");
             services.AddDbContext<AssiTAppContext>(opts => opts.UseSqlServer(conString));
 
             return services;

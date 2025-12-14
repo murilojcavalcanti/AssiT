@@ -25,9 +25,12 @@ namespace AssiT.BackEnd.Infra.Persistence.Configuration
                    .IsRequired()
                    .HasMaxLength(100);
 
+            builder.Property(u => u.Perfil)
+                   .IsRequired();
+
             builder.Property(u => u.Password)
                    .IsRequired()
-                   .HasMaxLength(16);
+                   .HasMaxLength(100);
         }
     }
 }

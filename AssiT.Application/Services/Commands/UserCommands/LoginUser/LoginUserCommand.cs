@@ -20,7 +20,7 @@ namespace AssiT.BackEnd.Application.Services.Commands.UserCommands.LoginUser
         public string Password { get; set; }
         public User ToEntity()
         {
-            return new User(Email,"",Password);
+            return new User(Email,Password);
         }
     }
 }

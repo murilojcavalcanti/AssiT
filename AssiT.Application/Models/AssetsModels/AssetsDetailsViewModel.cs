@@ -20,7 +20,7 @@ public class AssetsDetailsViewModel
     public string SerialNumber { get; set; }
     public DateTime AcquisitionDate { get; set; }
     public decimal AcquisitionValue { get; set; }
-    public static AssetsViewModel FromEntity(Asset Asset) =>
+    /*public static AssetsViewModel FromEntity(Asset Asset) =>
         new AssetsViewModel(
             id: Asset.Id,
             categoryId:Asset.CategoryId,
@@ -28,5 +28,5 @@ public class AssetsDetailsViewModel
             serialNumber: Asset.SerialNumber,
             acquisitionDate: Asset.AcquisitionDate,
             acquisitionValue: Asset.AcquisitionValue
-         );
+         );*/
 }

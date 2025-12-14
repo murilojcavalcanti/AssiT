@@ -16,7 +16,12 @@ namespace AssiT.BackEnd.Infra.Persistence.Configuration
 
             builder.Property(a => a.AcquisitionValue)
                    .IsRequired();
-            
+            builder.Property(a => a.AcquisitionDate)
+                    .IsRequired();
+
+            builder.Property(a => a.AssetStatus)
+                    .IsRequired();
+
             builder.Property(a => a.SerialNumber)
                     .HasMaxLength(15)
                    .IsRequired();

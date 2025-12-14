@@ -5,12 +5,12 @@
         public BaseEntity(DateTime createdAt)
         {
             IsDeleted = false;
-            this.createdAt = createdAt;
+            this.CreatedAt = createdAt;
         }
 
         public int Id { get; set; }
         public bool IsDeleted { get; set; }
-        public DateTime createdAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         public void SetAsDeleted()
         {
