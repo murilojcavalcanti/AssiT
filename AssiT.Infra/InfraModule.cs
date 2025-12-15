@@ -3,9 +3,12 @@ using AssiT.Core.Interfaces.Repository;
 using AssiT.Infra.Auth;
 using AssiT.Infra.Persistence.Context;
 using AssiT.Infra.Persistence.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace AssiT.Infra
 {
@@ -34,6 +37,24 @@ namespace AssiT.Infra
         {
             services.AddScoped<IAuthService, AuthSevice>();
             return services;
+        }
+        public static IServiceCollection AddAuth(this IServiceCollection service, IConfiguration configuration)
+        {
+            service.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opts =>
+            {
+                opts.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+
+                    ValidIssuer = configuration["Jwt:Issuer"],
+                    ValidAudience = configuration["Jwt:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]))
+                };
+            });
+            return service;
         }
     }
 }

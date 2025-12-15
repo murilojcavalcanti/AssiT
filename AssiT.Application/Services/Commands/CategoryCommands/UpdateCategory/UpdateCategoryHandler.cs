@@ -20,7 +20,7 @@ namespace AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateCont
             Category categoryUpdated = request.ToEntity();
             
             if (category == null)
-                return ResultViewModel.Error("Contact not found");
+                return ResultViewModel.Error("Category not found");
             
             category.Update(categoryUpdated);
 

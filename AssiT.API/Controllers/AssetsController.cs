@@ -35,7 +35,7 @@ namespace AssiT.BackEnd.API.Controllers
         }
 
         [HttpGet("GetAssetById")]
-        public async Task<IActionResult> GetByIdAsync([FromQuery] GetAllAssetQuery query)
+        public async Task<IActionResult> GetByIdAsync([FromQuery] GetAssetByIdQuery query)
         {
             try
             {
@@ -63,7 +63,12 @@ namespace AssiT.BackEnd.API.Controllers
                 {
                     return BadRequest(result);
                 }
-                return Ok(result);
+                var resultObject = new 
+                {
+                    entites= result.Data.Item1,
+                    total=result.Data.Item2 
+                };
+                return Ok(resultObject);
             }
             catch (Exception ex)
             {

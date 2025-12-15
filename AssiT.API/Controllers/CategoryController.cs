@@ -1,4 +1,8 @@
-﻿using MediatR;
+﻿using AssiT.BackEnd.Application.Services.Commands.CategoryCommands.CreateCategory;
+using AssiT.BackEnd.Application.Services.Commands.CategoryCommands.UpdateCategory;
+using AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateContact;
+using AssiT.BackEnd.Application.Services.Queries.CategoryQueries.GetAllCategories;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AssiT.BackEnd.API.Controllers
@@ -13,9 +17,8 @@ namespace AssiT.BackEnd.API.Controllers
         {
             _mediator = mediator;
         }
-        /*
-        [HttpPost("CreateContact")]
-        public IActionResult Create(CreateContactCommand request)
+        [HttpPost("CreateCategory")]
+        public IActionResult Create(CreateCategoryCommand request)
         {
             try
             {
@@ -32,8 +35,8 @@ namespace AssiT.BackEnd.API.Controllers
             }
         }
 
-        [HttpGet("GetContactById")]
-        public async Task<IActionResult> GetByIdAsync([FromQuery] GetAllContactQuery query)
+        [HttpGet("GetCategoryById")]
+        public async Task<IActionResult> GetByIdAsync([FromQuery] GetCategoryByIdQuery query)
         {
             try
             {
@@ -52,7 +55,7 @@ namespace AssiT.BackEnd.API.Controllers
         }
 
         [HttpGet("GetAllContacts")]
-        public async Task<IActionResult> GetAllAsync([FromQuery]GetAllContactQuery query)
+        public async Task<IActionResult> GetAllAsync([FromQuery]GetAllCategoriesQuery query)
         {
             try
             {
@@ -70,7 +73,7 @@ namespace AssiT.BackEnd.API.Controllers
         }
 
         [HttpPut("UpdateContact")]
-        public IActionResult Update(UpdateContactCommand request)
+        public IActionResult Update(UpdateCategoryCommand request)
         {
             try
             {
@@ -88,7 +91,7 @@ namespace AssiT.BackEnd.API.Controllers
         }
 
         [HttpDelete("DeleteContact")]
-        public IActionResult Delete(CreateContactCommand request)
+        public IActionResult Delete(DeleteCategoryCommand request)
         {
             try
             {
@@ -104,6 +107,5 @@ namespace AssiT.BackEnd.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
-        */
     }
 }

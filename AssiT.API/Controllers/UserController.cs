@@ -84,7 +84,12 @@ namespace AssiT.BackEnd.API.Controllers
                 {
                     return BadRequest(result);
                 }
-                return Ok(result);
+                var resultObject = new
+                {
+                    entites = result.Data.Item1,
+                    total = result.Data.Item2
+                };
+                return Ok(resultObject);
             }
             catch (Exception ex)
             {

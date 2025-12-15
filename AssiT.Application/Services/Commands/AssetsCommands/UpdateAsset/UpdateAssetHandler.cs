@@ -8,10 +8,12 @@ namespace AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateCont
     public class UpdateAssetHandler : IRequestHandler<UpdateAssetCommand, ResultViewModel>
     {
         private readonly IAssetRepository _assetRepository;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public UpdateAssetHandler(IAssetRepository assetRepository)
+        public UpdateAssetHandler(IAssetRepository assetRepository, ICategoryRepository categoryRepository)
         {
             _assetRepository = assetRepository;
+            _categoryRepository = categoryRepository;
         }
 
         public async Task<ResultViewModel> Handle(UpdateAssetCommand request, CancellationToken cancellationToken)
@@ -20,8 +22,10 @@ namespace AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateCont
             Asset assetUpdated = request.ToEntity();
             
             if (asset == null)
-                return ResultViewModel.Error("Contact not found");
-            
+                return ResultViewModel.Error("Asset not found");
+            if (assetUpdated.CategoryId == 0 || await _categoryRepository.Get(c => c.Id == assetUpdated.Id) is null)
+                return ResultViewModel.Error("Category not found");
+
             asset.Update(assetUpdated);
 
             await _assetRepository.Update(asset);
