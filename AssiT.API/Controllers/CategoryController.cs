@@ -3,12 +3,14 @@ using AssiT.BackEnd.Application.Services.Commands.CategoryCommands.UpdateCategor
 using AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateContact;
 using AssiT.BackEnd.Application.Services.Queries.CategoryQueries.GetAllCategories;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AssiT.BackEnd.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CategoryController : ControllerBase
     {
         private readonly IMediator _mediator;

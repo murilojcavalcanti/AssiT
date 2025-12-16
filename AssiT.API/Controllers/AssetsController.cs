@@ -1,12 +1,14 @@
 ﻿using AssiT.BackEnd.Application.Services.Commands.ContactCommands.CreateContact;
 using AssiT.BackEnd.Application.Services.Queries.ContactQueries.GetContact;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AssiT.BackEnd.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AssetsController : ControllerBase
     {
         private readonly IMediator _mediator;

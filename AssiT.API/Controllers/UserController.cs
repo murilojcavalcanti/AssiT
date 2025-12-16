@@ -6,12 +6,14 @@ using AssiT.BackEnd.Application.Services.Commands.UserCommands.UpdateUser;
 using AssiT.BackEnd.Application.Services.Queries.UserQueries.GetAllUsers;
 using AssiT.BackEnd.Application.Services.Queries.UserQueries.GetUserById;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AssiT.BackEnd.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -22,6 +24,7 @@ namespace AssiT.BackEnd.API.Controllers
         }
 
         [HttpPost("CreateUser")]
+        [AllowAnonymous]
         public IActionResult Create([FromBody] CreateUserCommand request)
         {
             try
@@ -39,6 +42,7 @@ namespace AssiT.BackEnd.API.Controllers
             }
         }
         [HttpPost("Login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginUserCommand request)
         {
             try
@@ -48,7 +52,7 @@ namespace AssiT.BackEnd.API.Controllers
                 {
                     return BadRequest(result);
                 }
-                return Ok();
+                return Ok(result);
             }
             catch (Exception ex)
             {

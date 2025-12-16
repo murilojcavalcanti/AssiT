@@ -1,5 +1,6 @@
 ﻿using AssiT.Application.Models;
 using AssiT.Application.Models.AssetModels;
+using AssiT.Application.utils;
 using AssiT.Core.Entities;
 using AssiT.Core.Interfaces.Repository;
 using MediatR;
@@ -19,13 +20,19 @@ namespace AssiT.BackEnd.Application.Services.Queries.ContactQueries.GetContact
 
         public async Task<ResultViewModel<(List<AssetsViewModel>, int)>> Handle(GetAllAssetQuery request, CancellationToken cancellationToken)
         {
-            Expression<Func<Asset, bool>> predicate = c =>
-                (request.CategoriaId == 0 || c.CategoryId == request.CategoriaId) &&
-                (!request.AcquisitionDate.HasValue || c.AcquisitionDate == request.AcquisitionDate) &&
-                (!request.AcquisitionValueMax.HasValue || c.AcquisitionValue <= request.AcquisitionValueMax.Value) &&
-                (!request.AcquisitionValueMin.HasValue || c.AcquisitionValue >= request.AcquisitionValueMin.Value);
+            var predicate = PredicateBuilder.True<Asset>()
+       .AndIf(request.CategoriaId.HasValue && request.CategoriaId > 0,
+           x => x.CategoryId == request.CategoriaId.Value)
+       .AndIf(request.AcquisitionDate.HasValue,
+           x => x.AcquisitionDate == request.AcquisitionDate.Value)
+       .AndIf(request.AcquisitionValueMin.HasValue,
+           x => x.AcquisitionValue >= request.AcquisitionValueMin.Value)
+       .AndIf(request.AcquisitionValueMax.HasValue,
+           x => x.AcquisitionValue <= request.AcquisitionValueMax.Value)
+       .AndIf(request.Status.HasValue,
+           x => x.AssetStatus == request.Status.Value);
 
-            (ICollection<Asset> assets, int total) = await _assetRepository.GetAll(null, request.Page);
+            (ICollection<Asset> assets, int total) = await _assetRepository.GetAll(predicate, request.Page);
 
             var assetViewModels = assets
                 .Select(AssetsViewModel.FromEntity)

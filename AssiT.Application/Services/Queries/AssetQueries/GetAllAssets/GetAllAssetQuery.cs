@@ -1,5 +1,6 @@
 ﻿using AssiT.Application.Models;
 using AssiT.Application.Models.AssetModels;
+using AssiT.Core.Enums;
 using MediatR;
 using System.ComponentModel;
 
@@ -14,6 +15,7 @@ namespace AssiT.BackEnd.Application.Services.Queries.ContactQueries.GetContact
 
         public decimal? AcquisitionValueMin { get; set; }
         public decimal? AcquisitionValueMax { get; set; }
+        public AssetStatus? Status { get; set; }
 
         [DefaultValue(1)]
         public int Page { get; set; }
@@ -22,13 +24,14 @@ namespace AssiT.BackEnd.Application.Services.Queries.ContactQueries.GetContact
             
         }
 
-        public GetAllAssetQuery(int page, int? categoriaId, DateTime acquisitionDate, decimal acquisitionValueMin, decimal acquisitionValueMax)
+        public GetAllAssetQuery(int page, int? categoriaId, DateTime acquisitionDate, decimal acquisitionValueMin, decimal acquisitionValueMax, AssetStatus? status)
         {
             Page = page;
             CategoriaId = categoriaId;
             AcquisitionDate = acquisitionDate;
             AcquisitionValueMin = acquisitionValueMin;
             AcquisitionValueMax = acquisitionValueMax;
+            Status = status;
         }
     }
 }
