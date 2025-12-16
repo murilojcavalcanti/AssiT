@@ -38,6 +38,7 @@ namespace AssiT.BackEnd.Application.Services.Queries.ContactQueries.GetContact
                 .Select(AssetsViewModel.FromEntity)
                 .ToList();
 
+
             return ResultViewModel<(List<AssetsViewModel>, int)>
                 .Success((assetViewModels, total));
         }
